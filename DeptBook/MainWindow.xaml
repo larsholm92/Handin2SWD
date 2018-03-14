@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:DeptBook"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <ToolBarTray Background="LightGray" DockPanel.Dock="Top">
+        <ToolBar>
+            <Button>Add</Button>
+            <Button>Remove</Button>
+            <Button>Details</Button>
+        </ToolBar>
+    </ToolBarTray>
+        <Grid>
+            <DataGrid>
+                
+            </DataGrid>
+        </Grid>
+    </DockPanel>
 </Window>

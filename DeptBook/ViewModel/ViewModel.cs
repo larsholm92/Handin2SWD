@@ -19,6 +19,7 @@ namespace DeptBook.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        //Creating a collection to store model-elements
         public ObservableCollection<Debtor> debtorList { get; set; } =
             new ObservableCollection<Debtor>();
 
@@ -38,6 +39,7 @@ namespace DeptBook.ViewModel
             }
         }
 
+        //Property to bind selectedIndex to
         public int CurrentIndex
         {
             get { return currentIndex; }
@@ -51,9 +53,12 @@ namespace DeptBook.ViewModel
             }
         }
 
+        //Instanses of the models to be used for dataContexts for new windows
         private Debtor currentDebtor = null;
         Transaction t = null;
         private Debtor debtor = null;
+        
+        //Property to controls which Debtor is changed
         public Debtor CurrentDebtor
         {
             get { return currentDebtor; }
@@ -67,23 +72,15 @@ namespace DeptBook.ViewModel
             }
         }
 
-        
-        public ViewModel()
-        {
-            
-        }
-
+        //Command to add new debtor
         public ICommand _addCommand;
-
         public ICommand AddCommand
         {
             get { return _addCommand ?? (_addCommand = new RelayCommand(AddDebtor)); }
         }
-
         private void AddDebtor()
         {
-            var dlg = new AddWindow();
-
+            var dlg = new AddWindow();  //Creating a new window. This windows is getting a debtor as DataContext
             debtor = new Debtor();
             dlg.DataContext = debtor;
             if (dlg.ShowDialog() == true)
@@ -95,12 +92,12 @@ namespace DeptBook.ViewModel
 
         }
 
+        //Command to delete a debtor
         public ICommand _deleteCommand;
         public ICommand DeleteCommand
         {
             get { return _deleteCommand ?? (_deleteCommand = new RelayCommand(DeleteDebtor)); }
         }
-
         private void DeleteDebtor()
         {
             MessageBoxResult res = MessageBox.Show("You are about to delete a debtor - Continue?", "Warning",
@@ -116,25 +113,24 @@ namespace DeptBook.ViewModel
 
         }
 
+        //Command to edit a debtor
         public ICommand _editCommand;
-
         public ICommand EditCommand
         {
             get { return _editCommand ?? (_editCommand = new RelayCommand(EditDebtor, Can_Execute)); }
         }
-
         private void EditDebtor()
         {
             var dlg = new AddWindow();
             dlg.Title = "Edit debitor";
            
 
-            Debtor temp = new Debtor();
+            Debtor temp = new Debtor(); //Creating a temporary debtor to edit
             temp.Name = CurrentDebtor.Name;
             temp.Amount = CurrentDebtor.Amount;
             temp.Note = CurrentDebtor.Note;
             dlg.DataContext = temp;
-            if (dlg.ShowDialog() == true)
+            if (dlg.ShowDialog() == true) //If confirm is pressed, the temporary debtor is copied to the current debtor
 
             {
                 currentDebtor.Name = temp.Name;
@@ -156,6 +152,7 @@ namespace DeptBook.ViewModel
             }
         }
 
+        //Command to open a new details-window
         public ICommand _detailCommand;
 
         public ICommand DetailCommand
@@ -167,12 +164,12 @@ namespace DeptBook.ViewModel
         {
             var dlg = new Detail();
             dlg.Title = "Debitor Details";
-            dlg.DataContext = currentDebtor.TransactionList;
+            dlg.DataContext = currentDebtor.TransactionList; //Setting the views datacontext
             dlg.Show();
         }
 
+        //Command to add a transaction
         public ICommand _addTCommand;
-
         public ICommand AddTCommand
         {
             get { return _addTCommand ?? (_addTCommand = new RelayCommand(AddTransaction)); }
@@ -182,11 +179,11 @@ namespace DeptBook.ViewModel
         {
             var dlg = new AddTWindow();
             t = new Transaction();
-            dlg.DataContext = t;
+            dlg.DataContext = t; //Setting the views datacontext
             if (dlg.ShowDialog() == true)
             {
                 currentDebtor.AddTransaction(t.TAmount,t.TNote);
-                currentDebtor.CalcAmount();
+                currentDebtor.CalcAmount(); //Calculates the total amount the debtor owes
                 OnPropertyChanged();
             }
             

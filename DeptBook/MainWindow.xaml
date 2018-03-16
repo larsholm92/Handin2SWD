@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeptBook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="450" Width="600"
         DataContext="{Binding ViewModel}">
     <Window.Resources>
         <DataTemplate x:Key="deptorTemplate">
             <WrapPanel>
-                <TextBlock Text="{Binding Path = Name}" Width="70" Foreground="{Binding Path=ID, Converter={StaticResource blueColor}}"></TextBlock>
-                <TextBlock Text="{Binding Path = Amount}" Width="70" Foreground="{Binding Path=ID, Converter={StaticResource blueColor}}" ></TextBlock>
-                <TextBlock Text="{Binding Path = Note}" Width ="70" Foreground="{Binding Path=ID, Converter={StaticResource blueColor}}" ></TextBlock>
+                <TextBlock Text="{Binding Path = Name}" Width="70"></TextBlock>
+                <TextBlock Text="{Binding Path = Amount}" Width="70"></TextBlock>
+                <TextBlock Text="{Binding Path = Note}" Width ="70"></TextBlock>
                 </WrapPanel>
             </DataTemplate>
     </Window.Resources>
@@ -23,12 +23,13 @@
                 <Button Command ="{Binding AddCommand}">Add</Button>
                 <Button Command ="{Binding DeleteCommand}">Remove</Button>
                 <Button Command ="{Binding EditCommand}">Edit</Button>
-                <Button Command= "{Binding DetalilCommand}">Details</Button>
+                <Button Command= "{Binding DetailCommand}">Details</Button>
+                <Button Command= "{Binding AddTCommand}">Add transaction</Button>
             </ToolBar>
         </ToolBarTray>
         <Grid>
-            <ListBox x:Name="comboBox" ItemsSource= "{Binding debtorList}" SelectedItem ="{Binding Path = CurrentDebtor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding Path=CurrentIndex}"  HorizontalAlignment="Left" Height="100" Margin="22,39,0,0" VerticalAlignment="Top" Width="510">
-                <ListBox.ItemTemplate>
+            <DataGrid x:Name="comboBox" ItemsSource= "{Binding debtorList}" SelectedItem ="{Binding Path = CurrentDebtor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding Path=CurrentIndex}"  HorizontalAlignment="Left" Height="325" Margin="22,39,0,0" VerticalAlignment="Top" Width="543">
+                <DataGrid.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text ="{Binding Name}" Width="80" Height="20" />
@@ -36,8 +37,8 @@
                             <TextBlock Text ="{Binding Note}" Width="150" Height="20" />
                         </StackPanel>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </DataGrid.ItemTemplate>
+            </DataGrid>
 
             <!--<DataGrid IsReadOnly="True" ItemsSource="{Binding}" SelectedIndex="{Binding CurrentIndex}" SelectedItem="{Binding CurrentDebtor}" IsSynchronizedWithCurrentItem ="true">
                 

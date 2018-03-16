@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,6 +15,7 @@ namespace DeptBook.Model
         private string name;
         private int amount;
         private string note;
+        private ObservableCollection<Transaction> transactionList = new ObservableCollection<Transaction>();
         public string Name {
             get { return name; }
             set
@@ -42,12 +44,36 @@ namespace DeptBook.Model
                 OnPropertyChanged();
             }
         }
+
+        internal ObservableCollection<Transaction> TransactionList { get => transactionList; set => transactionList = value; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void AddTransaction(int amount, string note)
+        {
+            Transaction t = new Transaction
+            {
+                TAmount = amount,
+                TNote = note
+            };
+            TransactionList.Add(t);
+
+        }
+
+        public void CalcAmount()
+        {
+            int sum = 0;
+            foreach (var x in TransactionList)
+            {
+                sum += x.TAmount;
+            }
+            Amount=sum;
         }
     }
 }

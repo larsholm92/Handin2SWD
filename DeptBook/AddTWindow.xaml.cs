@@ -1,5 +1,4 @@
-﻿using DeptBook.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +15,18 @@ using System.Windows.Shapes;
 namespace DeptBook
 {
     /// <summary>
-    /// Interaction logic for Detail.xaml
+    /// Interaction logic for AddTWindow.xaml
     /// </summary>
-    public partial class Detail : Window
+    public partial class AddTWindow : Window
     {
-        Debtor conDebtor = new Debtor();
-        public Detail()
+        public AddTWindow()
         {
             InitializeComponent();
-            
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

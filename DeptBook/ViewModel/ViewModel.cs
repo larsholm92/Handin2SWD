@@ -20,22 +20,7 @@ namespace DeptBook.ViewModel
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<Debtor> debtorList { get; set; } =
-            new ObservableCollection<Debtor>()
-            {
-                new Debtor()
-                {
-                    Name = "Jakob",
-                    Amount = 1000,
-                    Note = "For bajere"
-
-                },
-                new Debtor()
-                {
-                    Name = "Alexander",
-                    Amount = 1000,
-                    Note = "Gingergebyr"
-                }
-            };
+            new ObservableCollection<Debtor>();
 
         private int currentIndex = -1;
         [NotifyPropertyChangedInvocator]
@@ -79,6 +64,7 @@ namespace DeptBook.ViewModel
                 }
             }
         }
+
         
         public ViewModel()
         {
@@ -177,7 +163,33 @@ namespace DeptBook.ViewModel
 
         private void DebtorDetail()
         {
-
+            var dlg = new Detail();
+            dlg.Title = "Debitor Details";
+            dlg.DataContext = currentDebtor.TransactionList;
+            dlg.Show();
         }
+
+        public ICommand _addTCommand;
+
+        public ICommand AddTCommand
+        {
+            get { return _addTCommand ?? (_addTCommand = new RelayCommand(AddTransaction)); }
+        }
+
+        private void AddTransaction()
+        {
+            var dlg = new AddTWindow();
+            Transaction t = new Transaction();
+            dlg.DataContext = t;
+            if (dlg.ShowDialog() == true)
+            {
+                currentDebtor.AddTransaction(t.TAmount,t.TNote);
+                currentDebtor.CalcAmount();
+                OnPropertyChanged();
+            }
+            
+        }
+        
+        
     }
 }

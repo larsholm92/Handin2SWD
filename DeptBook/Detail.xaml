@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeptBook"
         mc:Ignorable="d"
-        Title="Detail" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Detail" Height="450" Width="600">
+    <DockPanel>
+        <Grid>
+            <ListBox x:Name="comboBox" ItemsSource= "{Binding}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding Path=CurrentIndex}"  HorizontalAlignment="Left" Height="100" Margin="22,39,0,0" VerticalAlignment="Top" Width="510">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text ="{Binding TAmount}" Width="80" Height="20" />
+                            <TextBlock Text ="{Binding TNote}" Width="150" Height="20" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="Amount" HorizontalAlignment="Left" Margin="18,8,0,0" VerticalAlignment="Top"/>
+            <Label Content="Note" HorizontalAlignment="Left" Margin="100,8,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </DockPanel>
 </Window>

@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeptBook"
         mc:Ignorable="d"
-        Title="AddWindow" Height="300" Width="300"
-        DataContext="Debtor">
+        Title="AddWindow" Height="300" Width="300">
 
     <Grid>
         <TextBlock x:Name="tbkID" HorizontalAlignment="Left" Margin="45,61,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Grid.ColumnSpan="2"/>

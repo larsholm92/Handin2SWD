@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DeptBook.ViewModel;
 
 namespace DeptBook
 {
@@ -23,6 +24,8 @@ namespace DeptBook
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel.ViewModel vm = new ViewModel.ViewModel();
+
         }
     }
 }

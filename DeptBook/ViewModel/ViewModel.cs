@@ -52,6 +52,8 @@ namespace DeptBook.ViewModel
         }
 
         private Debtor currentDebtor = null;
+        Transaction t = null;
+        private Debtor debtor = null;
         public Debtor CurrentDebtor
         {
             get { return currentDebtor; }
@@ -82,7 +84,7 @@ namespace DeptBook.ViewModel
         {
             var dlg = new AddWindow();
 
-            Debtor debtor = new Debtor();
+            debtor = new Debtor();
             dlg.DataContext = debtor;
             if (dlg.ShowDialog() == true)
             {
@@ -179,7 +181,7 @@ namespace DeptBook.ViewModel
         private void AddTransaction()
         {
             var dlg = new AddTWindow();
-            Transaction t = new Transaction();
+            t = new Transaction();
             dlg.DataContext = t;
             if (dlg.ShowDialog() == true)
             {

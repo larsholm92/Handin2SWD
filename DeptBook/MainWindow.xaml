@@ -28,7 +28,7 @@
             </ToolBar>
         </ToolBarTray>
         <Grid>
-            <DataGrid x:Name="comboBox" ItemsSource= "{Binding debtorList}" SelectedItem ="{Binding Path = CurrentDebtor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding Path=CurrentIndex}"  HorizontalAlignment="Left" Height="325" Margin="22,39,0,0" VerticalAlignment="Top" Width="543">
+            <DataGrid x:Name="comboBox" IsReadOnly="True" ItemsSource= "{Binding debtorList}" SelectedItem ="{Binding Path = CurrentDebtor}" IsSynchronizedWithCurrentItem="True" SelectedIndex="{Binding Path=CurrentIndex}"  HorizontalAlignment="Left" Height="325" Margin="22,39,0,0" VerticalAlignment="Top" Width="543">
                 <DataGrid.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">

@@ -10,22 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DeptBook.ViewModel;
+using DeptBook.Model;
 
 namespace DeptBook
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddWindow : Window
     {
-        public MainWindow()
+        public AddWindow()
         {
             InitializeComponent();
-            ViewModel.ViewModel vm = new ViewModel.ViewModel();
-            DataContext = vm;
+            
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }

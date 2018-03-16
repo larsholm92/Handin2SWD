@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DeptBook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding ViewModel}">
+        
     <DockPanel>
         <ToolBarTray Background="LightGray" DockPanel.Dock="Top">
         <ToolBar>
@@ -15,7 +17,7 @@
         </ToolBar>
     </ToolBarTray>
         <Grid>
-            <DataGrid>
+            <DataGrid IsReadOnly="True" ItemsSource="{Binding}">
                 
             </DataGrid>
         </Grid>

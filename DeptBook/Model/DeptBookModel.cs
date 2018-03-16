@@ -23,5 +23,7 @@ namespace DeptBook.Model
             return sum;
         }
 
+
+
     }
 }

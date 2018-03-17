@@ -24,11 +24,6 @@ namespace DeptBook.ViewModel
             new ObservableCollection<Debtor>();
 
         private int currentIndex = -1;
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         protected void NotifyPropertyChanged([CallerMemberName]string propertyName = null)
         {
@@ -184,7 +179,7 @@ namespace DeptBook.ViewModel
             {
                 currentDebtor.AddTransaction(t.TAmount,t.TNote);
                 currentDebtor.CalcAmount(); //Calculates the total amount the debtor owes
-                OnPropertyChanged();
+                NotifyPropertyChanged();
             }
             
         }

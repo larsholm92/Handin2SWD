@@ -55,6 +55,7 @@ namespace DeptBook.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        //Function to add a transaction
         public void AddTransaction(int amount, string note)
         {
             Transaction t = new Transaction
@@ -66,6 +67,7 @@ namespace DeptBook.Model
 
         }
 
+        //Function to calculate the total amount the debtor owes
         public void CalcAmount()
         {
             int sum = 0;

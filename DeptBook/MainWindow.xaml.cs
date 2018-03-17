@@ -22,18 +22,6 @@ namespace DeptBook
     /// </summary>
     public partial class MainWindow : Window
     {
-        Debtor Jakob = new Debtor()
-        {
-            Name = "Jakob",
-            Amount = 1000,
-            Note = "Gebyr"
-        };
-        Debtor Alexander = new Debtor()
-        {
-            Name = "GuessWho",
-            Amount = 10000,
-            Note = "GingerGebyr"
-        };
 
 
         public MainWindow()
@@ -41,7 +29,7 @@ namespace DeptBook
             InitializeComponent();
             ViewModel.ViewModel vm = new ViewModel.ViewModel();
      
-            DataContext = vm;
+            DataContext = vm; //Setting the datacontext to a viewmodel
         }
     }
 }

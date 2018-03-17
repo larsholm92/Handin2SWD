@@ -9,11 +9,11 @@ using DeptBook.Annotations;
 
 namespace DeptBook
 {
-    class Transaction
+   public  class Transaction
     {
         private int amount;
         private string note;
-        public int TAmount
+        public int TAmount //Property to access amount
         {
             get
             {
@@ -26,7 +26,7 @@ namespace DeptBook
                 OnPropertyChanged();
             }
         }
-        public string TNote
+        public string TNote //Property to acces note
         {
             get
             {

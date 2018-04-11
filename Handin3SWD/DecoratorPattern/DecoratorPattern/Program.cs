@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace DecoratorPattern
 {
+    //Alexander Rasmussen	    au566287
+    //Christoffer Broberg       au559138
+    //Jakob Dybdahl             au567226
+    //Lars Holm                 au479361
+
     class Program
     {
         static void Main(string[] args)
